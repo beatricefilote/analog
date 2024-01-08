@@ -34,12 +34,12 @@ using namespace std;
 int main()
 {
 
-  initWindow(SIZE, SIZE, "clock");
+  initwindow(SIZE, SIZE, "clock");
 
   while (!kbhit())
   {
 
-    showOptions()
+    showOptions();
   }
 
   closegraph();
@@ -50,11 +50,11 @@ int main()
 void drawOptionCard(option menuOption, int id)
 {
 
-  Point start = {Size / 2 * (id % 2),
-                 Size / 2 * (id % 2)}
+  Point start = {SIZE / 2 * (id % 2),
+                 SIZE / 2 * (id % 2)};
 
-  Point end = {Size / 2 * (id % 2 + 1),
-               Size / 2 * (id % 2 + 1)}
+  Point end = {SIZE / 2 * (id % 2 + 1),
+               SIZE / 2 * (id % 2 + 1)};
 
   outtextxy((start.x + end.x) / 2, (start.y + end.y) / 2, menuOption.label);
 }
@@ -67,12 +67,12 @@ void showOptions()
     {"ANALOG CLOCK", 1},
     {"ALARM", 2},
     {"TIMER", 3},
-  ]
-}
+  ];
+
 
 for (int = 0; i < 4, i++)
 {
-  drawOptionCard(options[i], i)
+  drawOptionCard(options[i], i);
 }
 }
 
