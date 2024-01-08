@@ -26,21 +26,16 @@ int main()
 {
 
   initwindow(SIZE, SIZE, "ANALOG CLOCK");
+  drawClock();
+
+  Point center = {SIZE / 2, SIZE / 2};
 
   while (!kbhit())
-
   {
-
-    drawClock();
-
-    Point center = {SIZE / 2, SIZE / 2};
-    Point current, current2;
 
     time_t now = time(0);
 
     tm *ltm = localtime(&now);
-
-    system("cls");
 
     drawHour(center, ltm->tm_hour);
     drawMinutes(center, ltm->tm_min);
@@ -84,9 +79,10 @@ void drawClock()
   }
 }
 
-void drawLine(Point A, Point B, int size)
+void drawLine(Point A, Point B, int size, int color = WHITE)
 {
-  setcolor(WHITE);
+
+  setcolor(color);
   setlinestyle(0, 0, size);
   line(A.x, A.y, B.x, B.y);
 }
@@ -97,7 +93,7 @@ void eraseLine(Point A, Point B, int size)
   line(A.x, A.y, B.x, B.y);
 }
 
-void drawHour(Point center, int hour)
+void drawHour(Point center, int hour, )
 {
 
   Point aux = {250 + 150 * sin(hour * PI / 6),
