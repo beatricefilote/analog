@@ -34,13 +34,16 @@ using namespace std;
 int main()
 {
 
+  option options[] = {
+      {"DIGITAL CLOCK", 0},
+      {"ANALOG CLOCK", 1},
+      {"ALARM", 2},
+      {"TIMER", 3},
+  };
+
   initwindow(SIZE, SIZE, "clock");
 
-  while (!kbhit())
-  {
-
-    showOptions();
-  }
+  showOptions();
 
   closegraph();
 
@@ -82,13 +85,6 @@ void drawOptionCard(option menuOption, int id)
 void showOptions()
 {
   int x, y;
-
-  option options[] = {
-      {"DIGITAL CLOCK", 0},
-      {"ANALOG CLOCK", 1},
-      {"ALARM", 2},
-      {"TIMER", 3},
-  };
 
   for (int i = 0; i < 4; i++)
   {
