@@ -75,13 +75,13 @@ void drawOptionCard(option menuOption, int id)
   }
 
   setcolor(WHITE);
-
+  rectangle(start.x, start.y, end.x, end.y);
   outtextxy((start.x + end.x) / 2, (start.y + end.y) / 2, menuOption.label);
 }
 
 void showOptions()
 {
-  //  Point mouseClick = {0, 0};
+  int x, y;
 
   option options[] = {
       {"DIGITAL CLOCK", 0},
@@ -94,7 +94,8 @@ void showOptions()
   {
     drawOptionCard(options[i], i);
   }
-  //  getmouseclick(WM_LBUTTONDOWN, mouseClick.x, mouseClick.y);
+  getmouseclick(WM_LBUTTONDOWN, x, y);
+  cout << x << ' ' << y;
 }
 
 void analogicClock()
