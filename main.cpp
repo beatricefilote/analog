@@ -19,6 +19,8 @@ void eraseLine(Point A, Point B, int size);
 void drawHour(Point center, int hour);
 void drawMinutes(Point center, int min);
 void drawSeconds(Point center, int sec);
+void analogicClock();
+void showOptions();
 
 using namespace std;
 
@@ -27,6 +29,36 @@ int main()
 
   initWindow(SIZE, SIZE, "clock");
 
+  while (!kbhit())
+  {
+
+    showOptions()
+  }
+
+  closegraph();
+
+  return 0;
+}
+
+void showOptions()
+{
+
+  struct option
+  {
+    char *label = "";
+    int id;
+  };
+
+  option options = [
+    {"", 0},
+    {"", 1},
+    {"", 2},
+    {"", 3},
+  ]
+}
+
+void analogicClock()
+{
   Point center = {SIZE / 2, SIZE / 2};
 
   while (!kbhit())
@@ -44,10 +76,6 @@ int main()
     delay(1000);
     cleardevice();
   }
-
-  closegraph();
-
-  return 0;
 }
 
 void drawClock()
