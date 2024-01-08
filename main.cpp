@@ -56,11 +56,18 @@ void drawOptionCard(option menuOption, int id)
   Point end = {SIZE / 2 * (id % 2 + 1),
                SIZE / 2 * (id % 2 + 1)};
 
+  cout << start.x << ' ' << start.y << endl;
+  cout << end.x << ' ' << end.y << endl
+       << endl;
+
+  setcolor(WHITE);
+
   outtextxy((start.x + end.x) / 2, (start.y + end.y) / 2, menuOption.label);
 }
 
 void showOptions()
 {
+  Point mouseClick = {0, 0}
 
   option options[] = {
       {"DIGITAL CLOCK", 0},
@@ -69,10 +76,11 @@ void showOptions()
       {"TIMER", 3},
   };
 
-  for (int i= 0; i < 4; i++)
+  for (int i = 0; i < 4; i++)
   {
     drawOptionCard(options[i], i);
   }
+  getmouseclick(WM_LBUTTONDOWN, mouseClick.x, mouseClick.y);
 }
 
 void analogicClock()
