@@ -16,7 +16,7 @@ struct Point
 
 char *intToString(int number);
 void drawClock();
-void drawLine(Point A, Point B, int size);
+void drawLine(Point A, Point B, int size, int color = WHITE);
 void eraseLine(Point A, Point B, int size);
 void drawHour(Point center, int hour);
 void drawMinutes(Point center, int min);
