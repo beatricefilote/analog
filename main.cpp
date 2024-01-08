@@ -12,6 +12,12 @@ struct Point
   double x, y;
 };
 
+struct option
+{
+  char *label = "";
+  int id;
+};
+
 char *intToString(int number);
 void drawClock();
 void drawLine(Point A, Point B, int size, int color = WHITE);
@@ -21,6 +27,7 @@ void drawMinutes(Point center, int min);
 void drawSeconds(Point center, int sec);
 void analogicClock();
 void showOptions();
+void drawOptionCard(option menuOption, int id);
 
 using namespace std;
 
@@ -40,21 +47,33 @@ int main()
   return 0;
 }
 
+void drawOptionCard(option menuOption, int id)
+{
+
+  Point start = {Size / 2 * (id % 2),
+                 Size / 2 * (id % 2)}
+
+  Point end = {Size / 2 * (id % 2 + 1),
+               Size / 2 * (id % 2 + 1)}
+
+  outtextxy((start.x + end.x) / 2, (start.y + end.y) / 2, menuOption.label);
+}
+
 void showOptions()
 {
 
-  struct option
-  {
-    char *label = "";
-    int id;
-  };
-
   option options = [
-    {"", 0},
-    {"", 1},
-    {"", 2},
-    {"", 3},
+    {"DIGITAL CLOCK", 0},
+    {"ANALOG CLOCK", 1},
+    {"ALARM", 2},
+    {"TIMER", 3},
   ]
+}
+
+for (int = 0; i < 4, i++)
+{
+  drawOptionCard(options[i], i)
+}
 }
 
 void analogicClock()
