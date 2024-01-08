@@ -8,7 +8,7 @@
 
 #define PI 3.1415
 #define SIZE 800
-union REGS i, o;
+union REGS in, out;
 
 struct Point
 {
@@ -203,23 +203,23 @@ char *intToString(int number)
 int initmouse()
 {
 
-  i.x.ax = 0;
+  in.x.ax = 0;
   int86(0X33, &i, &o);
-  return (o.x.ax);
+  return (out.x.ax);
 }
 
 void showmouseptr()
 {
-  i.x.ax = 1;
+  in.x.ax = 1;
   int86(0X33, &i, &o);
 }
 
 void getmousepos(int *button, int *x, int *y)
 {
-  i.x.ax = 3;
+  in.x.ax = 3;
   int86(0X33, &i, &o);
 
-  *button = o.x.bx;
-  *x = o.x.cx;
-  *y = o.x.dx;
+  *button = out.x.bx;
+  *x = out.x.cx;
+  *y = out.x.dx;
 }
