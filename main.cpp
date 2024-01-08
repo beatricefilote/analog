@@ -62,18 +62,17 @@ void drawOptionCard(option menuOption, int id)
 void showOptions()
 {
 
-  option options = [
-    {"DIGITAL CLOCK", 0},
-    {"ANALOG CLOCK", 1},
-    {"ALARM", 2},
-    {"TIMER", 3},
-  ];
+  option options[] = {
+      {"DIGITAL CLOCK", 0},
+      {"ANALOG CLOCK", 1},
+      {"ALARM", 2},
+      {"TIMER", 3},
+  };
 
-
-for (int = 0; i < 4, i++)
-{
-  drawOptionCard(options[i], i);
-}
+  for (int = 0; i < 4, i++)
+  {
+    drawOptionCard(options[i], i);
+  }
 }
 
 void analogicClock()
