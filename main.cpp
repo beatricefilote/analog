@@ -79,7 +79,7 @@ void drawClock()
   }
 }
 
-void drawLine(Point A, Point B, int size, int color = WHITE)
+void drawLine(Point A, Point B, int size, int color)
 {
 
   setcolor(color);
@@ -93,13 +93,13 @@ void eraseLine(Point A, Point B, int size)
   line(A.x, A.y, B.x, B.y);
 }
 
-void drawHour(Point center, int hour, )
+void drawHour(Point center, int hour)
 {
 
   Point aux = {250 + 150 * sin(hour * PI / 6),
                250 - 150 * cos(hour * PI / 6)};
 
-  drawLine(center, aux, 3);
+  drawLine(center, aux, 3, RED);
 }
 
 void drawMinutes(Point center, int min)
