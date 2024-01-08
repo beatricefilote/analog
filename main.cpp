@@ -69,7 +69,7 @@ void showOptions()
       {"TIMER", 3},
   };
 
-  for (int = 0; i < 4, i++)
+  for (int i= 0; i < 4; i++)
   {
     drawOptionCard(options[i], i);
   }
