@@ -25,13 +25,18 @@ void drawSeconds(Point center, int sec);
 int main()
 {
 
-  initwindow(SIZE, SIZE, "ANALOG CLOCK");
-  drawClock();
+  int gd = DETECT, gm;
+
+  // initgraph initializes the
+  // graphics system by loading a
+  // graphics driver from disk
+  initgraph(&gd, &gm, "");
 
   Point center = {SIZE / 2, SIZE / 2};
 
   while (!kbhit())
   {
+    drawClock();
 
     time_t now = time(0);
 
@@ -42,6 +47,7 @@ int main()
     drawSeconds(center, ltm->tm_sec);
 
     delay(1000);
+    cleardevice();
   }
 
   closegraph();
