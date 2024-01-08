@@ -3,9 +3,12 @@
 #include <iostream>
 #include <cmath>
 #include <ctime>
+#include<conio.h>
+#include<dos.h>
 
 #define PI 3.1415
 #define SIZE 800
+union REGS i, o;
 
 struct Point
 {
@@ -28,19 +31,20 @@ void drawSeconds(Point center, int sec);
 void analogicClock();
 void showOptions();
 void drawOptionCard(option menuOption, int id);
-int initmouse() void showmouseptr() void getmousepos(int *button, int *x, int *y)
+int initmouse(); void showmouseptr(); void getmousepos(int *button, int *x, int *y);
 
     using namespace std;
-
-int main()
-{
-
-  option options[] = {
+option options[] = {
       {"DIGITAL CLOCK", 0},
       {"ANALOG CLOCK", 1},
       {"ALARM", 2},
       {"TIMER", 3},
   };
+
+int main()
+{
+  int status, button, x, y;
+
 
   initwindow(SIZE, SIZE, "clock");
   status = initmouse();
@@ -58,7 +62,7 @@ int main()
     cout << x << ' ' << y;
   }
 
-  closegraph();
+ // closegraph();
 
   return 0;
 }
@@ -198,6 +202,7 @@ char *intToString(int number)
 
 int initmouse()
 {
+
   i.x.ax = 0;
   int86(0X33, &i, &o);
   return (o.x.ax);
