@@ -67,7 +67,7 @@ void drawOptionCard(option menuOption, int id)
 
 void showOptions()
 {
-  Point mouseClick = {0, 0}
+//  Point mouseClick = {0, 0};
 
   option options[] = {
       {"DIGITAL CLOCK", 0},
@@ -80,7 +80,7 @@ void showOptions()
   {
     drawOptionCard(options[i], i);
   }
-  getmouseclick(WM_LBUTTONDOWN, mouseClick.x, mouseClick.y);
+//  getmouseclick(WM_LBUTTONDOWN, mouseClick.x, mouseClick.y);
 }
 
 void analogicClock()
