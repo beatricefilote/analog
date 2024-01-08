@@ -5,7 +5,7 @@
 #include <ctime>
 
 #define PI 3.1415
-#define SIZE 500
+#define SIZE 800
 
 struct Point
 {
@@ -50,15 +50,29 @@ int main()
 void drawOptionCard(option menuOption, int id)
 {
 
-  Point start = {SIZE / 2 * (id % 2),
-                 SIZE / 2 * (id % 2)};
+  Point start = {0, 0};
+  Point end = {0, 0};
 
-  Point end = {SIZE / 2 * (id % 2 + 1),
-               SIZE / 2 * (id % 2 + 1)};
-
-  cout << start.x << ' ' << start.y << endl;
-  cout << end.x << ' ' << end.y << endl
-       << endl;
+  if (id == 0)
+  {
+    start = {0, 0};
+    end = {SIZE / 2, SIZE / 2};
+  }
+  if (id == 1)
+  {
+    start = {0, SIZE / 2 + 1};
+    end = {SIZE / 2, SIZE};
+  }
+  if (id == 2)
+  {
+    start = {SIZE / 2 + 1, 0};
+    end = {SIZE, SIZE / 2};
+  }
+  if (id == 3)
+  {
+    start = {SIZE / 2 + 1, SIZE / 2 + 1};
+    end = {SIZE, SIZE};
+  }
 
   setcolor(WHITE);
 
@@ -67,7 +81,7 @@ void drawOptionCard(option menuOption, int id)
 
 void showOptions()
 {
-//  Point mouseClick = {0, 0};
+  //  Point mouseClick = {0, 0};
 
   option options[] = {
       {"DIGITAL CLOCK", 0},
@@ -80,7 +94,7 @@ void showOptions()
   {
     drawOptionCard(options[i], i);
   }
-//  getmouseclick(WM_LBUTTONDOWN, mouseClick.x, mouseClick.y);
+  //  getmouseclick(WM_LBUTTONDOWN, mouseClick.x, mouseClick.y);
 }
 
 void analogicClock()
