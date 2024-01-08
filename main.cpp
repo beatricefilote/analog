@@ -19,8 +19,8 @@ void drawClock();
 void drawLine(Point A, Point B, int size);
 void eraseLine(Point A, Point B, int size);
 void drawHour(Point center, int hour);
-void drawMinutes(Point center, int hour);
-void drawSeconds(Point center, int hour);
+void drawMinutes(Point center, int min);
+void drawSeconds(Point center, int sec);
 
 int main()
 {
@@ -42,33 +42,9 @@ int main()
 
     system("cls");
 
-    cout << ltm->tm_hour << " " << ltm->tm_min;
-
     drawHour(center, ltm->tm_hour);
-    int raza1 = 150, raza2 = 200;
-
-    float unghi1, unghi2;
-
-    for (unghi1 = 0; unghi1 <= 2 * PI; unghi1 += 2 * PI / 60) // minutar
-    {
-      current.x = center.x + raza1 * cos(unghi1 - PI / 2);
-      current.y = center.y + raza1 * sin(unghi1 - PI / 2);
-
-      drawLine(center, current, 3);
-
-      for (unghi2 = 0; unghi2 <= 2 * PI; unghi2 += 2 * PI / 60) // secundar
-      {
-        current2.x = center.x + raza2 * cos(unghi2 - PI / 2);
-        current2.y = center.y + raza2 * sin(unghi2 - PI / 2);
-
-        drawLine(center, current2, 1);
-
-        delay(1000); // puneti 1000 ca sa fie o secunda
-
-        eraseLine(center, current2, 1);
-      }
-      eraseLine(center, current, 3);
-    }
+    drawMinutes(center, ltm->tm_min);
+    drawSeconds(center, ltm->tm_sec);
 
     delay(1000);
   }
@@ -125,25 +101,25 @@ void drawHour(Point center, int hour)
 {
 
   Point aux = {250 + 150 * sin(hour * PI / 6),
-               250 - 100 * cos(hour * PI / 6)};
+               250 - 150 * cos(hour * PI / 6)};
 
   drawLine(center, aux, 3);
 }
 
-void drawMinutes(Point center, int hour)
+void drawMinutes(Point center, int min)
 {
 
-  Point aux = {250 + 190 * sin(hour * PI / 30),
-               250 - 190 * cos(hour * PI / 30)};
+  Point aux = {250 + 190 * sin(min * PI / 30),
+               250 - 190 * cos(min * PI / 30)};
 
   drawLine(center, aux, 3);
 }
 
-void drawSeconds(Point center, int hour)
+void drawSeconds(Point center, int sec)
 {
 
-  Point aux = {250 + 150 * sin(hour * PI / 30),
-               250 - 150 * cos(hour * PI / 30)};
+  Point aux = {250 + 150 * sin(sec * PI / 30),
+               250 - 150 * cos(sec * PI / 30)};
 
   drawLine(center, aux, 3);
 }
