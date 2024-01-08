@@ -18,7 +18,6 @@ char *intToString(int number);
 void drawClock();
 void drawLine(Point A, Point B, int size);
 void eraseLine(Point A, Point B, int size);
-void drawHour(Point center, int hour);
 
 int main()
 {
@@ -32,7 +31,7 @@ int main()
     drawClock();
 
     Point center = {SIZE / 2, SIZE / 2};
-    Point current, current2;   //este in loc de xcentru si ycentru
+    Point current, current2;
 
     time_t now = time(0);
 
@@ -42,7 +41,7 @@ int main()
 
     cout << ltm->tm_hour << " " << ltm->tm_min;
 
-    drawHour(center, ltm->tm_hour);
+    drawHour(center, tm->hour);
     int raza1 = 150, raza2 = 200;
 
     float unghi1, unghi2;
@@ -109,9 +108,9 @@ void drawClock()
 void drawHour(Point center, int hour)
 {
   Point aux = {250 + 200 * sin((hour % 12) * PI / 6) - 5,
-               250 - 200 * cos((hour % 12) * PI / 6)};
+               250 - 200 * cos((hour % 12) * PI / 6)}
 
-  drawLine(center, aux, 2);
+  drawLine(center, aux, 2)
 }
 
 void drawLine(Point A, Point B, int size)
@@ -127,4 +126,10 @@ void eraseLine(Point A, Point B, int size)
   line(A.x, A.y, B.x, B.y);
 }
 
+void drawHour(Point center, int hour)
+{
+  Point aux = {250 + 200 * sin((hour % 12) * PI / 6) - 5,
+               250 - 200 * cos((hour % 12) * PI / 6)}
 
+  drawLine(center, )
+}
