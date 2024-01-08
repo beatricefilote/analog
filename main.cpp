@@ -18,13 +18,6 @@ struct option
   int id;
 };
 
-option options[] = {
-    {"DIGITAL CLOCK", 0},
-    {"ANALOG CLOCK", 1},
-    {"ALARM", 2},
-    {"TIMER", 3},
-};
-
 char *intToString(int number);
 void drawClock();
 void drawLine(Point A, Point B, int size, int color = WHITE);
@@ -35,15 +28,35 @@ void drawSeconds(Point center, int sec);
 void analogicClock();
 void showOptions();
 void drawOptionCard(option menuOption, int id);
+int initmouse() void showmouseptr() void getmousepos(int *button, int *x, int *y)
 
-using namespace std;
+    using namespace std;
 
 int main()
 {
 
-  initwindow(SIZE, SIZE, "clock");
+  option options[] = {
+      {"DIGITAL CLOCK", 0},
+      {"ANALOG CLOCK", 1},
+      {"ALARM", 2},
+      {"TIMER", 3},
+  };
 
-  showOptions();
+  initwindow(SIZE, SIZE, "clock");
+  status = initmouse();
+  showmouseptr();
+
+  while (!kbhit())
+  {
+    getmousepos(&button, &x, &y);
+    if (button == 1)
+    {
+      cout << x << ' ' << y << endl;
+    }
+    showOptions();
+    getmouseclick(WM_LBUTTONDOWN, x, y);
+    cout << x << ' ' << y;
+  }
 
   closegraph();
 
@@ -84,14 +97,11 @@ void drawOptionCard(option menuOption, int id)
 
 void showOptions()
 {
-  int x, y;
 
   for (int i = 0; i < 4; i++)
   {
     drawOptionCard(options[i], i);
   }
-  getmouseclick(WM_LBUTTONDOWN, x, y);
-  cout << x << ' ' << y;
 }
 
 void analogicClock()
@@ -184,4 +194,27 @@ char *intToString(int number)
   snprintf(result, length + 1, "%d", number);
 
   return result;
+}
+
+int initmouse()
+{
+  i.x.ax = 0;
+  int86(0X33, &i, &o);
+  return (o.x.ax);
+}
+
+void showmouseptr()
+{
+  i.x.ax = 1;
+  int86(0X33, &i, &o);
+}
+
+void getmousepos(int *button, int *x, int *y)
+{
+  i.x.ax = 3;
+  int86(0X33, &i, &o);
+
+  *button = o.x.bx;
+  *x = o.x.cx;
+  *y = o.x.dx;
 }
