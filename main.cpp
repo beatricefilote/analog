@@ -18,6 +18,13 @@ struct option
   int id;
 };
 
+option options[] = {
+    {"DIGITAL CLOCK", 0},
+    {"ANALOG CLOCK", 1},
+    {"ALARM", 2},
+    {"TIMER", 3},
+};
+
 char *intToString(int number);
 void drawClock();
 void drawLine(Point A, Point B, int size, int color = WHITE);
@@ -33,13 +40,6 @@ using namespace std;
 
 int main()
 {
-
-  option options[] = {
-      {"DIGITAL CLOCK", 0},
-      {"ANALOG CLOCK", 1},
-      {"ALARM", 2},
-      {"TIMER", 3},
-  };
 
   initwindow(SIZE, SIZE, "clock");
 
