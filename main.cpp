@@ -133,8 +133,8 @@ void drawHour(Point center, int hour)
 void drawMinutes(Point center, int hour)
 {
 
-  Point aux = {250 + 150 * sin(hour * PI / 6),
-               250 - 100 * cos(hour * PI / 6)};
+  Point aux = {250 + 190 * sin(hour * PI / 30),
+               250 - 190 * cos(hour * PI / 30)};
 
   drawLine(center, aux, 3);
 }
@@ -142,8 +142,8 @@ void drawMinutes(Point center, int hour)
 void drawSeconds(Point center, int hour)
 {
 
-  Point aux = {250 + 150 * sin(hour * PI / 6),
-               250 - 100 * cos(hour * PI / 6)};
+  Point aux = {250 + 150 * sin(hour * PI / 30),
+               250 - 150 * cos(hour * PI / 30)};
 
   drawLine(center, aux, 3);
 }
