@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cmath>
 #include <ctime>
-#include <tuple>
 
 #define PI 3.1415
 #define SIZE 500
@@ -27,10 +26,7 @@ int main()
 
   int gd = DETECT, gm;
 
-  // initgraph initializes the
-  // graphics system by loading a
-  // graphics driver from disk
-  initgraph(&gd, &gm, "");
+  initWindow(SIZE, SIZE, "clock");
 
   Point center = {SIZE / 2, SIZE / 2};
 
