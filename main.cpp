@@ -3,22 +3,13 @@
 #include <iostream>
 #include <cmath>
 #include <ctime>
-#include<conio.h>
-#include<dos.h>
 
 #define PI 3.1415
-#define SIZE 800
-union REGS in, out;
+#define SIZE 500
 
 struct Point
 {
   double x, y;
-};
-
-struct option
-{
-  char *label = "";
-  int id;
 };
 
 char *intToString(int number);
@@ -28,88 +19,35 @@ void eraseLine(Point A, Point B, int size);
 void drawHour(Point center, int hour);
 void drawMinutes(Point center, int min);
 void drawSeconds(Point center, int sec);
-void analogicClock();
-void showOptions();
-void drawOptionCard(option menuOption, int id);
-int initmouse(); void showmouseptr(); void getmousepos(int *button, int *x, int *y);
-
-    using namespace std;
-option options[] = {
-      {"DIGITAL CLOCK", 0},
-      {"ANALOG CLOCK", 1},
-      {"ALARM", 2},
-      {"TIMER", 3},
-  };
+void analog();
+void digital();
+using namespace std;
 
 int main()
 {
-  int status, button, x, y;
-
-
-  initwindow(SIZE, SIZE, "clock");
-  status = initmouse();
-  showmouseptr();
-
-  while (!kbhit())
+  int type = 0;
+  cout << "introdu comanda 1 pt analog sau 2 pt digital\n"; // or any other input for any other output =)))
+  cin >> type;
+  while (type != 1 && type != 2)
   {
-    getmousepos(&button, &x, &y);
-    if (button == 1)
-    {
-      cout << x << ' ' << y << endl;
-    }
-    showOptions();
-    getmouseclick(WM_LBUTTONDOWN, x, y);
-    cout << x << ' ' << y;
+    cout << "nasol, incearca iar";
+    cin >> type;
   }
-
- // closegraph();
-
+  if (type == 1)
+    analog();
+  else
+    digital();
   return 0;
 }
 
-void drawOptionCard(option menuOption, int id)
+void digital()
 {
-
-  Point start = {0, 0};
-  Point end = {0, 0};
-
-  if (id == 0)
-  {
-    start = {0, 0};
-    end = {SIZE / 2, SIZE / 2};
-  }
-  if (id == 1)
-  {
-    start = {0, SIZE / 2 + 1};
-    end = {SIZE / 2, SIZE};
-  }
-  if (id == 2)
-  {
-    start = {SIZE / 2 + 1, 0};
-    end = {SIZE, SIZE / 2};
-  }
-  if (id == 3)
-  {
-    start = {SIZE / 2 + 1, SIZE / 2 + 1};
-    end = {SIZE, SIZE};
-  }
-
-  setcolor(WHITE);
-  rectangle(start.x, start.y, end.x, end.y);
-  outtextxy((start.x + end.x) / 2, (start.y + end.y) / 2, menuOption.label);
+  // digital clock code goes here no params needed
 }
-
-void showOptions()
+void analog()
 {
+  initWindow(SIZE, SIZE, "clock");
 
-  for (int i = 0; i < 4; i++)
-  {
-    drawOptionCard(options[i], i);
-  }
-}
-
-void analogicClock()
-{
   Point center = {SIZE / 2, SIZE / 2};
 
   while (!kbhit())
@@ -127,6 +65,8 @@ void analogicClock()
     delay(1000);
     cleardevice();
   }
+
+  closegraph();
 }
 
 void drawClock()
@@ -198,28 +138,4 @@ char *intToString(int number)
   snprintf(result, length + 1, "%d", number);
 
   return result;
-}
-
-int initmouse()
-{
-
-  in.x.ax = 0;
-  int86(0X33, &i, &o);
-  return (out.x.ax);
-}
-
-void showmouseptr()
-{
-  in.x.ax = 1;
-  int86(0X33, &i, &o);
-}
-
-void getmousepos(int *button, int *x, int *y)
-{
-  in.x.ax = 3;
-  int86(0X33, &i, &o);
-
-  *button = out.x.bx;
-  *x = out.x.cx;
-  *y = out.x.dx;
 }
