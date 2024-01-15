@@ -490,12 +490,26 @@ void addSecond(Time &time)
     time.hours++;
   }
 }
+
+char *formatTime(Time t)
+{
+
+  return "time";
+}
+
 void timer()
 {
   Time currentTime = {0, 0, 0};
 
+  initwindow(1000, 500, "Cronometru");
+  settextstyle(EUROPEAN_FONT, 0, 5);
+
   while (true)
   {
+    cleardevice();
+
+    outtextxy(10, 50, formatTime(currentTime));
+
     addSecond(currentTime);
     cout << currentTime.hours << ' ' << currentTime.minutes << ' ' << currentTime.seconds << endl;
     delay(1000);
