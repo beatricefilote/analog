@@ -498,13 +498,14 @@ char *intToChar(int t)
   if (t < 10)
   {
     strcpy(res, "0");
-    strcpy(res + 1, t + '0');
+    char digit =char('0'+t);
+    strcmp(res, &digit);
   }
 }
 
 char *formatTime(Time t)
 {
-  const *time = "";
+  char *time = "";
   strcpy(time, intToChar(t.hours));
   strcat(time, ":");
 
