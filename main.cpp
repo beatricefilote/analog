@@ -508,22 +508,11 @@ char *intToChar(int t)
 char *formatTime(Time t)
 {
   std::string tString = "";
-  tString += " : ";
+  tString += to_string(t.hours) + " : " + to_string(t.minutes) + " : " to_string(t.seconds);
   char *cstr = new char[tString.length() + 1];
   strcpy(cstr, tString.c_str());
   // do stuff
   return cstr;
-
-  char *time = "";
-  char *separator = " : ";
-  // strcpy(time, intToChar(t.hours));
-  strcat(time, separator;
-
-  // strcpy(time, intToChar(t.hours));
-  strcat(time, separator);
-  // strcpy(time, intToChar(t.hours));
-
-  return time;
 }
 
 void timer()
