@@ -499,7 +499,7 @@ char *intToChar(int t)
   {
     strcpy(res, "0");
     char digit = char('0' + t);
-    strcmp(res, &digit);
+    strcat(res, &digit);
   }
 
   return res;
@@ -508,11 +508,12 @@ char *intToChar(int t)
 char *formatTime(Time t)
 {
   char *time = "";
+  char *separator = " : ";
   // strcpy(time, intToChar(t.hours));
-  strcat(time, " : ");
+  strcat(time, separator;
 
   // strcpy(time, intToChar(t.hours));
-  strcat(time, " : ");
+  strcat(time, separator);
   // strcpy(time, intToChar(t.hours));
 
   return time;
