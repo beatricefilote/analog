@@ -528,8 +528,8 @@ void timer()
   {
     cleardevice();
 
-    // outtextxy(10, 50, formatTime(currentTime));
-    cout << formatTime(currentTime) << endl;
+    outtextxy(10, 50, "formatTime(currentTime)");
+    // cout << formatTime(currentTime) << endl;
     addSecond(currentTime);
     cout << currentTime.hours << ' ' << currentTime.minutes << ' ' << currentTime.seconds << endl;
     delay(1000);
