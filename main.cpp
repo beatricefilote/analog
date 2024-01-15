@@ -489,9 +489,6 @@ void addSecond(Time &time)
     time.minutes = 0;
     time.hours++;
   }
-  else{
-    time.minutes++;
-  }
 }
 void timer()
 {
