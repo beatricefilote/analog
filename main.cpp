@@ -491,10 +491,27 @@ void addSecond(Time &time)
   }
 }
 
-char *formatTime(Time t)
+char *intToChar(int t)
 {
 
-  return "time";
+  char *res = "";
+  if (t < 10)
+  {
+    strcpy(res, "0");
+    strcpy(res + 1, t + '0');
+  }
+}
+
+char *formatTime(Time t)
+{
+  const *time = "";
+  strcpy(time, intToChar(t.hours));
+  strcat(time, ":");
+
+  strcpy(time, intToChar(t.hours));
+  strcat(time, ":");
+  strcpy(time, intToChar(t.hours));
+  return time;
 }
 
 void timer()
