@@ -494,7 +494,7 @@ void timer()
 {
   Time currentTime = {0, 0, 0};
 
-  while (!kbhit())
+  while (true)
   {
     addSecond(currentTime);
     cout << currentTime.hours << ' ' << currentTime.minutes << ' ' << currentTime.seconds << endl;
