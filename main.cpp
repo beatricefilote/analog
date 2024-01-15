@@ -501,6 +501,8 @@ char *intToChar(int t)
     char digit = char('0' + t);
     strcmp(res, &digit);
   }
+
+  return res;
 }
 
 char *formatTime(Time t)
