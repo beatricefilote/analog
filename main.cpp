@@ -508,12 +508,13 @@ char *intToChar(int t)
 char *formatTime(Time t)
 {
   char *time = "";
-  strcpy(time, intToChar(t.hours));
-  strcat(time, ":");
+  // strcpy(time, intToChar(t.hours));
+  // strcat(time, ":");
 
-  strcpy(time, intToChar(t.hours));
-  strcat(time, ":");
-  strcpy(time, intToChar(t.hours));
+  // strcpy(time, intToChar(t.hours));
+  // strcat(time, ":");
+  // strcpy(time, intToChar(t.hours));
+
   return time;
 }
 
@@ -528,8 +529,8 @@ void timer()
   {
     cleardevice();
 
-    outtextxy(10, 50, "formatTime(currentTime)");
-    // cout << formatTime(currentTime) << endl;
+    outtextxy(10, 50, formatTime(currentTime));
+
     addSecond(currentTime);
     cout << currentTime.hours << ' ' << currentTime.minutes << ' ' << currentTime.seconds << endl;
     delay(1000);
