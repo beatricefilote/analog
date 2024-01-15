@@ -507,6 +507,13 @@ char *intToChar(int t)
 
 char *formatTime(Time t)
 {
+  std::string tString = "";
+  tString += " : ";
+  char *cstr = new char[tString.length() + 1];
+  strcpy(cstr, tString.c_str());
+  // do stuff
+  return cstr;
+
   char *time = "";
   char *separator = " : ";
   // strcpy(time, intToChar(t.hours));
