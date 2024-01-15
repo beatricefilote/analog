@@ -498,7 +498,7 @@ char *intToChar(int t)
   if (t < 10)
   {
     strcpy(res, "0");
-    char digit =char('0'+t);
+    char digit = char('0' + t);
     strcmp(res, &digit);
   }
 }
@@ -522,12 +522,12 @@ void timer()
   initwindow(1000, 500, "Cronometru");
   settextstyle(EUROPEAN_FONT, 0, 5);
 
-  while (true)
+  while (kbhit)
   {
     cleardevice();
 
-    outtextxy(10, 50, formatTime(currentTime));
-
+    // outtextxy(10, 50, formatTime(currentTime));
+    cout << formatTime(currentTime) << endl;
     addSecond(currentTime);
     cout << currentTime.hours << ' ' << currentTime.minutes << ' ' << currentTime.seconds << endl;
     delay(1000);
