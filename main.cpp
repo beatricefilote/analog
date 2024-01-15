@@ -511,7 +511,7 @@ char *formatTime(Time t)
   string hours = to_string(t.hours);
   string minutes = to_string(t.minutes);
   string seconds = to_string(t.seconds);
-  std::string tString = to_string(t.hours) + " : " + to_string(t.minutes) + " : " to_string(t.seconds);
+  std::string tString = hours + " : " + minutes + " : " + seconds;
   char *cstr = new char[tString.length() + 1];
   strcpy(cstr, tString.c_str());
   // do stuff
